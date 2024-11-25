@@ -1,0 +1,283 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto", sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    font-size: 1rem;
+    line-height: 1.6;
+    padding: 0 20px;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('./Img/bn18.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+body.overlay-active::before {
+    opacity: 0.3; /* Reduced opacity when overlay is active */
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    padding-bottom: 0px;
+    z-index: 1;
+}
+
+#header-logo {
+    width: 150px;  /* Set the desired width */
+    height: auto;  /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure the image is responsive */
+    height: 65px; /* Set a fixed height if needed */
+}
+
+/* header h1 {
+    font-size: 1.4rem; 
+    color: black;
+} */
+
+/* Base navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between; /* Ensure spacing between items */
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 1000;
+}
+
+/* Hamburger menu for mobile */
+.navbar .menu-toggle {
+    display: none; /* Hidden by default for larger screens */
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Navbar links styling */
+.navbar .nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.navbar .nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    margin-top: 22px;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: #333;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+#hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #333;
+    z-index: 10;
+}
+
+/* Main content styles */
+.palette-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px 0; /* Add consistent padding */
+}
+
+.palette-container {
+    flex: 1 1 calc(50% - 10px); /* Mobile-first grid */
+    max-width: calc(50% - 10px);
+    background-color: #fff;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.palette-container:hover {
+    transform: translateY(-8px);
+}
+
+.palette-container .image-container {
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 8px;
+    border-radius: 12px 12px 0 0;
+}
+
+.palette-container img {
+    width: 80px;
+    height: 80px;
+}
+
+.palette-container .name {
+    background-color: #d3d3d3;
+    padding: 10px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    border-radius: 0 0 10px 10px;
+}
+
+.palette-container a{
+    text-decoration: none;
+}
+
+/* Ensure overlay covers the full viewport */
+.overlay-container {
+    display: none;
+    position: fixed; /* Ensure it stays fixed on the screen */
+    top: 0;
+    left: 0;
+    width: 100vw; /* Full width of viewport */
+    height: 100vh; /* Full height of viewport */
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    z-index: 1000; /* Ensure it is above other elements */
+    transition: opacity 0.5s ease; /* Smooth transition */
+    opacity: 0; /* Initial hidden state */
+}
+
+.overlay-container.active {
+    display: flex; /* Show overlay */
+    opacity: 1; /* Fully visible */
+}
+
+/* Style for overlay content box */
+.overlay-content {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 60%; /* Responsive width */
+    text-align: justify;
+    position: relative;
+    animation: fadeIn 0.3s ease-in-out; /* Smooth fade-in */
+    margin-left: 790px;
+    margin-top: -450px;
+}
+
+/* Close button styling */
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    /* background: #ff4d4d; */
+    color: #e41818;
+    border: none;
+    /* border-radius: 50%;
+    width: 25px;
+    height: 25px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive Breakpoints */
+
+/* Tablets and smaller screens */
+@media (min-width: 768px) {
+    header h1 {
+        font-size: 2.1rem;
+    }
+
+    nav ul {
+        gap: 20px;
+    }
+
+    .palette-container {
+        flex: 1 1 calc(33.33% - 20px);
+        max-width: calc(33.33% - 20px);
+    }
+
+    .palette-container img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .overlay-content {
+        max-width: 400px;
+    }
+}
+
+/* Desktops and larger screens */
+@media (min-width: 1024px) {
+    header {
+        padding: 0px 40px;
+        padding-bottom: 10px;
+    }
+
+    .palette-container {
+        flex: 1 1 calc(25% - 20px);
+        max-width: calc(25% - 20px);
+    }
+}
+
+@media (min-width: 1440px) {
+    .palette-container {
+        flex: 1 1 calc(20% - 20px);
+        max-width: calc(20% - 20px);
+    }
+
+    .palette-grid {
+        padding-bottom: 40px; /* Consistent padding at the bottom */
+    }
+}
